@@ -1,0 +1,89 @@
+/* Contact.css */
+.bg-gradient-custom {
+  background: linear-gradient(90deg, #e91e63 0%, #9c27b0 100%); /* Màu hồng tím gradient */
+  color: white;
+}
+
+.text-gradient-custom {
+  background: -webkit-linear-gradient(#e91e63, #9c27b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-custom {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #e91e63, #9c27b0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #eee;
+  background-color: #fcfcfc;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #e91e63;
+}
+
+.btn-custom {
+  background: linear-gradient(90deg, #e91e63 0%, #9c27b0 100%);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.btn-custom:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  margin-right: 10px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.section-title {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
