@@ -1,0 +1,45 @@
+/* HeaderAdmin.css */
+
+.header-admin {
+    background-color: #2c3e50; /* Màu xanh đen chuyên nghiệp cho Admin */
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Style cho các link trong menu */
+.admin-link {
+    color: #ecf0f1 !important; /* Màu chữ trắng xám */
+    font-weight: 500;
+    margin-right: 5px;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+    padding: 10px 15px !important;
+}
+
+/* Hiệu ứng khi di chuột vào */
+.admin-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+
+/* Trạng thái khi đang ở trang đó (Active) */
+.admin-link.active {
+    background-color: #3498db !important; /* Màu xanh dương nổi bật */
+    color: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Responsive cho mobile: Căn giữa các phần tử */
+@media (max-width: 991px) {
+    .header-admin .container > div {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-pills {
+        justify-content: center;
+        width: 100%;
+    }
+}

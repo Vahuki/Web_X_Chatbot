@@ -14,11 +14,12 @@ function App() {
       {/* ----------------------------CLIENT---------------------------- */}
       <Route element={<LayoutKhachHang />}>
         {/* 2. ROUTE CLIENT */}
-        <Route path="/trang-chu" element={<ClientPages.TrangChu />} />
-        <Route path="/san-pham" element={<ClientPages.SanPham/>} />
+        <Route path="/" element={<ClientPages.TrangChu />} />
         <Route path="/gioi-thieu" element={<ClientPages.GioiThieu/>} />
         <Route path="/lien-he" element={<ClientPages.LienHe/>} />
         <Route path="/gio-hang" element={<ClientPages.GioHang />} />
+        <Route path="/chi-tiet-san-pham" element={<ClientPages.ChiTietSanPham />} />
+
       </Route>
       {/* ----------------------------ADMIN---------------------------- */}
       <Route element={<LayoutAdmin />}>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/quan-ly-tai-khoan" element={<AdminPages.QuanLyNguoiDung />} />
         <Route path="/quan-ly-san-pham" element={<AdminPages.QuanLySanPham/>} />
         <Route path="/quan-ly-don-hang" element={<AdminPages.QuanLyDonHang/>} />
+        <Route path="/quan-ly-danh-muc" element={<AdminPages.QuanLyDanhMuc/>} />
       </Route>
       {/* ----------------------------STAFF---------------------------- */}
       <Route path="ho-tro" element={<StaffPages.HoTroKhachHang />} />
