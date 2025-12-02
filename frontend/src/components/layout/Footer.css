@@ -1,0 +1,19 @@
+footer {
+    background-color: #e8e6ead2;
+    padding: 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s;
+    display: block;
+}
+
+footer a:hover {
+    padding-left: 5px;
+}
+
+footer p {
+    margin-bottom: 0px;
+}

@@ -7,7 +7,9 @@ const LayoutKhachHang = () => {
     <div>
       <Header />
       <main>
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

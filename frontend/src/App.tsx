@@ -10,14 +10,19 @@ import LayoutKhachHang from "./components/layout/LayoutKhachHang";
 function App() {
   return (
     <Routes>
+      {/* ----------------------------------------------------------------------- */}
       <Route element={<LayoutKhachHang />}>
-        {/* 2. ĐỊNH NGHĨA ROUTE CON (TRANG CHỦ) */}
-        {/* path="/" là đường dẫn gốc. */}
+        {/* 2. ROUTE CLIENT */}
         <Route path="/trang-chu" element={<ClientPages.TrangChu />} />
-
-        {/* Thêm các trang Client khác ở đây */}
+        <Route path="/san-pham" element={<ClientPages.SanPham/>} />
+        <Route path="/gioi-thieu" element={<ClientPages.GioiThieu/>} />
+        <Route path="/lien-he" element={<ClientPages.LienHe/>} />
         <Route path="/gio-hang" element={<ClientPages.GioHang />} />
       </Route>
+      {/* ------------------------------------------------------------------------ */}
+      <Route path="/dang-nhap" element={<AuthPages.DangNhap />} />
+      <Route path="/dang-ky" element={<AuthPages.DangKy />} />
+
     </Routes>
   );
 }
