@@ -7,7 +7,7 @@ const QuanLySanPham = () => {
         <div className="card-header bg-white d-flex justify-content-between">
           <h5 className="text-primary fw-bold mt-2">QUẢN LÝ SẢN PHẨM</h5>
           <button className="btn btn-primary btn-sm" style={{ width: '150px' }} data-bs-toggle="modal" data-bs-target="#addModal">
-            Thêm Đơn Hàng
+            Thêm Sản Phẩm
           </button>
         </div>
 
@@ -18,11 +18,10 @@ const QuanLySanPham = () => {
               <thead className="table-light">
                 <tr>
                   <th className="text-center">#</th>
-                  <th>Mã Sản Phẩm</th>
-                  <th>Tên</th>
+                  <th className="text-center">Tên</th>
                   <th className="text-center">Giá</th>
-                  <th className="text-start">Mô Tả</th>
-                  <th className="text-start">Hình Ảnh</th>
+                  <th className="text-center">Mô Tả</th>
+                  <th className="text-center">Hình Ảnh</th>
                   <th className="text-center">Size</th>
                   <th className="text-center">Màu</th>
                   <th className="text-center">Số Lượng</th>
@@ -34,7 +33,6 @@ const QuanLySanPham = () => {
                 {/* --- DÒNG 1: Đơn hàng đang chờ duyệt --- */}
                 <tr>
                   <td className="text-center">1</td>
-                  <td>#SP001</td>
                   <td>Áo Thun Basic</td>
                   <td className="text-center">150.000 đ</td>
                   <td>Chất liệu Cotton 100%, thoáng mát, thấm hút mồ hôi.</td>
@@ -65,6 +63,152 @@ const QuanLySanPham = () => {
           </div>
         </div >
       </div >
+      {/* --- MODAL THÊM MỚI --- */}
+      {/* Sửa lỗi tabIndex (chữ I viết hoa) */}
+      <div className="modal fade" id="addModal" tabIndex={-1} aria-hidden="true">
+        <div className="modal-dialog modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Thêm Sản Phẩm Mới</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Tên</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Giá</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Mô tả</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Hình ảnh</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Size</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Màu</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Số Lượng</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Loại</label>
+                  <select className="form-select" defaultValue="0">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                Đóng
+              </button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal">
+                Thêm mới
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* --- MODAL CẬP NHẬT */}
+      <div className="modal fade" id="updateModal" tabIndex={-1} aria-hidden="true">
+        <div className="modal-dialog modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Cập Nhật Thông Tin Sản Phẩm</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Tên</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Giá</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Mô tả</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Hình ảnh</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Size</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Màu</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Số Lượng</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Loại</label>
+                  <select className="form-select" defaultValue="0">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                Đóng
+              </button>
+              <button type="button" className="btn btn-success" data-bs-dismiss="modal">
+                Cập nhật
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* MODAL XÓA */}
+      <div className="modal fade" id="deleteModal" tabIndex={-1} aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Xóa Tài Khoản</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="alert alert-danger" role="alert">
+                Bạn có chắc chắn muốn xóa sản phẩm <strong></strong>?
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                Đóng
+              </button>
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
+                Xác nhận
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

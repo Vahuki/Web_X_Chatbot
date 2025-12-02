@@ -21,10 +21,7 @@ const Footer = () => {
                     <ul className="mt-3 list-unstyled">
                         {/* 2. Đã đổi thẻ <a> thành <Link> và href thành to */}
                         <li>
-                            <Link to="/trang-chu" className="text-decoration-none text-dark">Trang chủ</Link>
-                        </li>
-                        <li>
-                            <Link to="/san-pham" className="text-decoration-none text-dark">Sản phẩm</Link>
+                            <Link to="/" className="text-decoration-none text-dark">Trang chủ</Link>
                         </li>
                         <li>
                             <Link to="/gioi-thieu" className="text-decoration-none text-dark">Về chúng tôi</Link>

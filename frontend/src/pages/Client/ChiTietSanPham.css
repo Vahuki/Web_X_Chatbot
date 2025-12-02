@@ -1,0 +1,13 @@
+.features {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #928f8f;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #666;
+}

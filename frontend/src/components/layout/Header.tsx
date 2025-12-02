@@ -28,13 +28,8 @@ const Header = () => {
             {/* MENU GIỮA */}
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/trang-chu">
+                <NavLink className="nav-link" to="/">
                   Trang chủ
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/san-pham">
-                  Sản phẩm
                 </NavLink>
               </li>
               <li className="nav-item">
