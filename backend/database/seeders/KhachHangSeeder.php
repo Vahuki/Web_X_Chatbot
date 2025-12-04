@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class KhachHangSeeder extends Seeder
 {
@@ -12,13 +13,13 @@ class KhachHangSeeder extends Seeder
      */
     public function run(): void
     {
-        $password = '123456';
+        $password = Hash::make('123456');
         $khachHangs = [
             [
-                'ten_khach_hang' => 'Trần Văn A',
-                'email' => 'tranvana@gmail.com',
-                'password' => 'password123',
-                'so_dien_thoai' => $password,
+                'ho_va_ten' => 'Trần Văn A',
+                'email' => 'phanvana@gmail.com',
+                'password' => @$password,
+                'so_dien_thoai' => '0912345678',
                 'dia_chi' => '789 Đường M, Quận N, TP. P',
             ],
             [

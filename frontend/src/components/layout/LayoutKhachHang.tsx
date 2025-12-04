@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import ChatBot from "../../pages/Client/TroLyAI";
 const LayoutKhachHang = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const LayoutKhachHang = () => {
         <div className="container">
           <Outlet />
         </div>
+        <ChatBot />
       </main>
       <Footer />
     </div>

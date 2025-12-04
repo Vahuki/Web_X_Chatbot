@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class NhanVienSeeder extends Seeder
 {
@@ -15,19 +16,19 @@ class NhanVienSeeder extends Seeder
         $nhanViens = [
             [
                 'ten_nhan_vien' => 'Phan Văn Nhật',
-                'email' => 'st.bread3rd@gmail.com',
-                'password' => '12345678',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('123456'),
                 'so_dien_thoai' => '0123456789',
                 'dia_chi' => '123 Đường A, Quận B, TP. C',
                 'chuc_vu' => 1,
             ],
             [
                 'ten_nhan_vien' => 'Nguyễn Thị Lan',
-                'email' => 'lan@gmail.com',
-                'password' => '87654321',
+                'email' => 'staff@gmail.com',
+                'password' => Hash::make('123456'),
                 'so_dien_thoai' => '0987654321',
                 'dia_chi' => '456 Đường X, Quận Y, TP. Z',
-                'chuc_vu' => 0,
+                'chuc_vu' => 2,
             ]
         ];
         DB::table('nhan_Viens')->truncate();

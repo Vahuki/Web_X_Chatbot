@@ -9,11 +9,14 @@ class NhanVien extends Model
     protected $table = 'nhan_viens';
 
     protected $fillable = [
-        'ten_nhan_vien',
+        'ho_va_ten',
         'email',
         'password',
         'so_dien_thoai',
         'dia_chi',
-        'chuc_vu',
+        'chuc_vu',  // 0: Nhân viên, 1: Quản lý
+    ];
+    protected $hidden = [
+        'password',
     ];
 }
