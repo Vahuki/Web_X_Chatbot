@@ -7,6 +7,7 @@ use App\Http\Controllers\SanPhamController;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AIController;
 //Home
 Route::get('/products', [SanPhamController::class, 'index']);
 
@@ -22,3 +23,4 @@ Route::get('/products/{id}', [SanPhamController::class, 'show']);
 
 //Donhang
 Route::post('/orders', [DonHangController::class, 'datHang']);
+Route::post('/chat', [AIController::class, 'chat']);
