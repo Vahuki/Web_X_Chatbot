@@ -1,0 +1,116 @@
+.login-container {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, rgb(85, 73, 33) 0%, #fda085 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-size: cover;
+}
+
+.wrappe {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrappe::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 165, 0, 0.1);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+h1 {
+    color: #ff6b6b;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.input-box-login {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-box-login input {
+    width: 100%;
+    padding: 12px 15px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-box-login input:focus {
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.remember-forgot a {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.btn_login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn_login:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 165, 0, 0.3);
+}
+
+.login-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-link a {
+    color: #ff6b6b;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Fruit-themed decorative elements */
+.wrappe::after {
+    content: '🍊';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    font-size: 100px;
+    opacity: 0.2;
+    z-index: -1;
+}
