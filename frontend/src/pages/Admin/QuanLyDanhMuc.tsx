@@ -101,7 +101,7 @@ const QuanLyDanhMuc = () => {
         </div>
       </div>
 
-      {/* MODAL XÓA */}
+      {/* MODAL XÓAAAAAAAAAAAAAAA */}
       <div className="modal fade" id="deleteModal" tabIndex={-1} aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
