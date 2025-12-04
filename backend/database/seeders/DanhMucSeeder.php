@@ -20,9 +20,6 @@ class DanhMucSeeder extends Seeder
                 'ten_danh_muc' => 'Giày Sneaker Luxury',
             ],
             [
-                'ten_danh_muc' => 'Giày Loafer & Moccasin',
-            ],
-            [
                 'ten_danh_muc' => 'Túi Xách Tay',
             ],
             [

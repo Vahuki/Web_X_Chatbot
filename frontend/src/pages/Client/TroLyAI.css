@@ -1,0 +1,101 @@
+/* Nút mở chat */
+.chat-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #007bff;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+/* Khung chat */
+.chat-window {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 320px;
+  height: 420px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.chat-header {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.chat-message.user {
+  justify-content: flex-end;
+}
+
+.chat-message.bot {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.chat-message.user .message-bubble {
+  background: #007bff;
+  color: white;
+}
+
+.chat-message.bot .message-bubble {
+  background: #e0e0e0;
+  color: black;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.chat-send-btn {
+  margin-left: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}

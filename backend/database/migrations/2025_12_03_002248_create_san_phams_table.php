@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('mo_ta')->nullable();
             $table->decimal('gia', 10, 2);
             $table->string('hinh_anh')->nullable();
-            $table->string('size');
             $table->string('mau_sac');
             $table->integer('so_luong');
             $table->integer('danh_muc_id');

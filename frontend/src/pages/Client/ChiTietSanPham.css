@@ -1,13 +1,80 @@
-.features {
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #928f8f;
-}
+/* ChiTietSanPham.css */
 
-.feature-item {
+/* Container ảnh chính */
+.main-image-container {
+    width: 100%;
+    height: 500px; /* Chiều cao cố định để ảnh đều nhau */
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f8f9fa;
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    color: #666;
+    justify-content: center;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cắt ảnh đẹp, không bị méo */
+    transition: transform 0.3s ease;
+}
+
+.main-image:hover {
+    transform: scale(1.05); /* Phóng to nhẹ khi di chuột */
+}
+
+/* Ảnh thumbnail nhỏ bên dưới */
+.thumb-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.thumb-img.active, .thumb-img:hover {
+    border-color: #0d6efd;
+    opacity: 1;
+}
+
+/* Phần thông tin */
+.product-title {
+    font-size: 1.8rem;
+    color: #333;
+    line-height: 1.3;
+}
+
+.product-price {
+    font-size: 2rem;
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.product-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Nút chọn màu/size */
+.btn-outline-dark.active, .btn-outline-secondary.active {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .main-image-container {
+        height: 350px; /* Giảm chiều cao ảnh trên mobile */
+    }
+    .product-title {
+        font-size: 1.5rem;
+    }
+    .product-price {
+        font-size: 1.5rem;
+    }
 }

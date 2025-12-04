@@ -1,0 +1,93 @@
+/* frontend/src/pages/Client/GioHang.css */
+
+/* Tùy chỉnh Input số lượng */
+.quantity-control .input-group {
+    width: 120px;
+}
+
+.quantity-control .form-control {
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    font-weight: 600;
+    color: #333;
+}
+
+.quantity-control .btn {
+    border-color: #ced4da;
+    color: #6c757d;
+    z-index: 0;
+}
+
+.quantity-control .btn:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+/* Ẩn mũi tên mặc định của input number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Ảnh sản phẩm */
+.product-image {
+    border: 1px solid #dee2e6;
+    padding: 2px;
+    background-color: #fff;
+}
+
+/* Tên sản phẩm */
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    /* Cắt bớt nếu tên quá dài */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Giá tiền */
+.price-tag {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Nút xóa */
+.btn-outline-danger {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Box Tổng tiền */
+.cart-total {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+/* Hiệu ứng hover cho từng dòng sản phẩm */
+.product-card {
+    transition: background-color 0.3s;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.product-card:hover {
+    background-color: #fdfdfd;
+}

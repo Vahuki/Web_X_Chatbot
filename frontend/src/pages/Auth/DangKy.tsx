@@ -1,14 +1,72 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link để chuyển trang không load lại
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import authApi from '../../api/authApi';
 import './DangKy.css';
 
-const DangKy = () => {
+// 1. Import toast
+import { toast } from 'react-toastify';
 
-  // Hàm xử lý khi bấm nút Đăng ký (Sau này sẽ gọi API Spring Boot ở đây)
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Chặn hành động load lại trang mặc định của form
-    console.log("Đã bấm đăng ký, chuẩn bị gọi API...");
-    // TODO: Gọi API đăng ký tại đây
+const DangKy = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    ho_va_ten: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    so_dien_thoai: '',
+    dia_chi: ''
+  });
+
+  // Không cần state error nữa vì đã có toast
+  // const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      // 2. Thông báo lỗi (Màu đỏ)
+      toast.error('Mật khẩu nhập lại không khớp!');
+      return;
+    }
+
+    try {
+      const { confirmPassword, ...dataToSend } = formData;
+      await authApi.register(dataToSend);
+      
+      // 3. Thông báo thành công (Màu xanh)
+      toast.success("Đăng ký thành công! Vui lòng đăng nhập.");
+      
+      // Chuyển trang sau 2 giây để người dùng kịp đọc thông báo
+      setTimeout(() => {
+          navigate('/dang-nhap');
+      }, 2000);
+
+    } catch (err: any) {
+      console.log("Lỗi đăng ký:", err);
+
+      if (err.response && err.response.data) {
+          const svData = err.response.data;
+          if (svData.message) {
+              toast.error(svData.message); // Hiển thị lỗi từ server
+          } else if (svData.errors) {
+              const firstField = Object.keys(svData.errors)[0];
+              const firstMsg = svData.errors[firstField][0];
+              toast.error(firstMsg);
+          } else {
+              toast.error("Đăng ký thất bại. Vui lòng kiểm tra lại thông tin.");
+          }
+      } else if (err.request) {
+          toast.error("Không thể kết nối đến Server.");
+      } else {
+          toast.error("Lỗi không xác định.");
+      }
+    }
   };
 
   return (
@@ -16,64 +74,51 @@ const DangKy = () => {
       <div className="wrapper">
         <h1>Đăng ký tài khoản</h1>
 
-        {/* Xóa action và method, thay bằng onSubmit */}
+        {/* Bỏ div hiển thị lỗi cũ đi vì đã có Toast */}
+        
         <form onSubmit={handleSubmit}>
+            {/* ... Giữ nguyên các input ... */}
+            
+            {/* Ví dụ 1 input để bạn copy lại */}
+            <div className="input-box">
+                <input 
+                    type="text" 
+                    name="ho_va_ten" 
+                    placeholder=" " 
+                    required 
+                    value={formData.ho_va_ten} 
+                    onChange={handleChange} 
+                />
+                <label>Họ và tên</label>
+            </div>
+            
+            <div className="input-box">
+                <input type="email" name="email" placeholder=" " required value={formData.email} onChange={handleChange} />
+                <label>Email</label>
+            </div>
+            <div className="input-box">
+                <input type="tel" name="so_dien_thoai" placeholder=" " required value={formData.so_dien_thoai} onChange={handleChange} />
+                <label>Số điện thoại</label>
+            </div>
+            <div className="input-box">
+                <input type="text" name="dia_chi" placeholder=" " required value={formData.dia_chi} onChange={handleChange} />
+                <label>Địa chỉ</label>
+            </div>
+            <div className="input-box">
+                <input type="password" name="password" placeholder=" " required value={formData.password} onChange={handleChange} />
+                <label>Mật khẩu</label>
+            </div>
+            <div className="input-box">
+                <input type="password" name="confirmPassword" placeholder=" " required value={formData.confirmPassword} onChange={handleChange} />
+                <label>Nhập lại mật khẩu</label>
+            </div>
 
-          {/* Họ và tên */}
-          <div className="input-box">
-            <input type="text" id="fullname" name="hovaten" placeholder=" " required />
-            <label htmlFor="fullname">Họ và tên</label> {/* React dùng htmlFor thay vì for */}
-          </div>
-
-          {/* Số điện thoại */}
-          <div className="input-box">
-            <input
-              type="tel"
-              id="phone"
-              name="sodienthoai"
-              placeholder=" "
-              required
-              pattern="^\d{10,11}$"
-              title="Số điện thoại phải là 10 hoặc 11 chữ số"
-            />
-            <label htmlFor="phone">Số điện thoại</label>
-          </div>
-
-          {/* Tên đăng nhập */}
-          <div className="input-box">
-            <input type="text" id="username" name="tentaikhoan" placeholder=" " required />
-            <label htmlFor="username">Tên đăng nhập</label>
-          </div>
-
-          {/* Email */}
-          <div className="input-box">
-            <input type="email" id="email" name="email" placeholder=" " required />
-            <label htmlFor="email">Email</label>
-          </div>
-
-          {/* Mật khẩu */}
-          <div className="input-box">
-            <input type="password" id="password" name="matkhau" placeholder=" " required />
-            <label htmlFor="password">Mật khẩu</label>
-          </div>
-
-          {/* Nhập lại mật khẩu */}
-          <div className="input-box">
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" " required />
-            <label htmlFor="confirmPassword">Nhập lại mật khẩu</label>
-          </div>
-          {/* Nhớ mật khẩu & Quên mật khẩu */}
-          <div className="remember-forgot">
-            <label><input type="checkbox" id="remember" /> Nhớ mật khẩu</label>
-          </div>
-          {/* Nút bấm */}
-          <button type="submit" className="btn btn-primary w-100">Đăng ký ngay</button>
-          {/* Chuyển nút Đăng nhập thành Link để không load lại trang */}
-          <div className="text-center mt-2">
-            <span>Đã có tài khoản? </span>
-            <Link to="/dang-nhap" className="text-decoration-none">Đăng nhập</Link>
-          </div>
-
+            <button type="submit" className="btn btn-primary w-100">Đăng ký ngay</button>
+            
+            <div className="text-center mt-2">
+                <span>Đã có tài khoản? </span>
+                <Link to="/dang-nhap" className="text-decoration-none">Đăng nhập</Link>
+            </div>
         </form>
       </div>
     </div>
