@@ -14,7 +14,8 @@ function App() {
       {/* ----------------------------CLIENT---------------------------- */}
       <Route element={<LayoutKhachHang />}>
         {/* 2. ROUTE CLIENT */}
-        <Route path="/" element={<ClientPages.TrangChu />} />
+        <Route path="/*" element={<ClientPages.TrangChu />} />
+        <Route path="/san-pham" element={<ClientPages.SanPham/>} />
         <Route path="/gioi-thieu" element={<ClientPages.GioiThieu/>} />
         <Route path="/lien-he" element={<ClientPages.LienHe/>} />
         <Route path="/gio-hang" element={<ClientPages.GioHang />} />
