@@ -1,0 +1,46 @@
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    /* Đẩy tên sang trái, số sang phải */
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #4b5563;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.category-item:hover {
+    background-color: #eef2ff;
+    color: #5b73e8;
+}
+
+.category-item.active {
+    background-color: #e0e7ff;
+    color: #5b73e8;
+    font-weight: 600;
+}
+
+.card-product {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;   
+    height: 100%;
+}
+
+.card-product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-product .price {
+    color: red;
+}

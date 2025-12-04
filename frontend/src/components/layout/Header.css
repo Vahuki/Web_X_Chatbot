@@ -9,7 +9,7 @@
 
 /* 2. Logo Styling */
 .navbar-brand img {
-    height: 45px;
+    height: 50px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -22,8 +22,8 @@
     color: rgba(255, 255, 255, 0.9) !important; /* Màu trắng mờ */
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 15px;
-    padding: 8px 18px !important; /* Padding vừa phải để tạo hình viên thuốc */
+    font-size: 20px;
+    padding: 10px 20px !important; /* Padding vừa phải để tạo hình viên thuốc */
     border-radius: 50px; /* Bo tròn viền */
     transition: all 0.3s ease; /* Hiệu ứng mượt */
     
