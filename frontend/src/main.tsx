@@ -10,11 +10,14 @@ import './styles/global.css';
 
 // 1. IMPORT BrowserRouter từ react-router-dom
 import { BrowserRouter } from 'react-router-dom'
+import { CartProvider } from './context/Cartcontext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>      
     </BrowserRouter>
   </StrictMode>,
 )
