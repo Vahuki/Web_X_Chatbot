@@ -1,82 +1,98 @@
-import React, { useState, useRef, useEffect } from "react"; // Thêm useRef và useEffect
+import React, { useState, useRef, useEffect } from "react";
 import "./TroLyAI.css";
 import { sendMessage } from "../../api/aiApi";
 
 const TroLyAI: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
-    []
-  );
+  const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
   const [input, setInput] = useState("");
-  const messagesEndRef = useRef<HTMLDivElement>(null); // Dùng để cuộn xuống cuối
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Cuộn xuống tin nhắn mới nhất
-  const scrollToBottom = () => {
+  const QUICK_SUGGESTIONS = [
+    "Tôi muốn xem sản phẩm bán chạy",
+    "Tư vấn giúp tôi chọn size phù hợp",
+    "Shop có free ship không?"
+  ];
+
+  // Auto scroll
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+
+    // Khi mở chat → gửi lời chào 1 lần nếu chưa có tin nhắn
+    if (!isOpen && messages.length === 0) {
+      setMessages([
+        {
+          sender: "bot",
+          text: "Xin chào! 👋 Tôi là trợ lý AI. Bạn muốn tôi hỗ trợ gì không?"
+        }
+      ]);
+    }
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]); // Mỗi khi messages thay đổi, cuộn xuống
+  const handleSend = async (preset?: string) => {
+    const textToSend = preset || input;
 
-  const toggleChat = () => setIsOpen(!isOpen);
+    if (!textToSend.trim()) return;
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+    // Tin nhắn người dùng
+    setMessages((prev) => [...prev, { sender: "user", text: textToSend }]);
+    setInput("");
 
-    // Lấy nội dung tin nhắn người dùng trước khi reset input
-    const messageToSend = input; 
+    // Hiệu ứng bot đang gõ
+    setIsTyping(true);
 
-    // tin nhắn người dùng
-    const userMessage = { sender: "user", text: messageToSend };
-    setMessages((prev) => [...prev, userMessage]);
-    
-    // **Xóa ký tự ngay lập tức sau khi gửi**
-    setInput(""); 
-
-    // gọi API
-    // Gửi messageToSend thay vì input (vì input đã bị reset)
-    const res = await sendMessage(messageToSend); 
+    // Gọi API
+    const res = await sendMessage(textToSend);
 
     let botReply = "❌ Không nhận được phản hồi từ server.";
 
-    // backend tự trả về dạng { reply: "..."} → ưu tiên
-    if (res?.reply) {
-      botReply = res.reply;
-    }
-    // fallback: format chuẩn của Gemini
-    else if (
-      res?.candidates &&
-      res.candidates[0]?.content?.parts &&
-      res.candidates[0].content.parts[0]?.text
-    ) {
+    if (res?.reply) botReply = res.reply;
+    else if (res?.candidates?.[0]?.content?.parts?.[0]?.text)
       botReply = res.candidates[0].content.parts[0].text;
-    }
 
-    const botMessage = { sender: "bot", text: botReply };
-    setMessages((prev) => [...prev, botMessage]);
-
-    // **Lưu ý: setInput("") đã được di chuyển lên trên để xóa nhanh hơn**
+    // Delay để typing animation nhìn thật hơn
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
+    }, 800);
   };
 
   return (
     <>
-      {/* Nút mở chat */}
-      <button className="chat-button" onClick={toggleChat}>
-        💬
-      </button>
+      <button className="chat-button" onClick={toggleChat}>💬</button>
 
       {isOpen && (
         <div className="chat-window">
-          <div className="chat-header">AI Tư Vấn Khách Hàng</div> {/* Đã đổi tên ở đây */}
+          <div className="chat-header">AI Tư Vấn Khách Hàng</div>
+
 
           <div className="chat-body">
             {messages.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.sender}`}>
+                {msg.sender === "bot" && <div className="avatar bot">🤖</div>}
+                {msg.sender === "user" && <div className="avatar user">🙋‍♂️</div>}
                 <div className="message-bubble">{msg.text}</div>
               </div>
             ))}
-            <div ref={messagesEndRef} /> {/* Dùng để cuộn xuống cuối */}
+
+            {/* Typing animation */}
+            {isTyping && (
+              <div className="chat-message bot">
+                <div className="avatar bot">🤖</div>
+                <div className="typing">
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                  <span className="dot"></span>
+                </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="chat-input-area">
@@ -86,12 +102,21 @@ const TroLyAI: React.FC = () => {
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Nhập tin nhắn..."
               className="chat-input"
-              name="chatInput"
-            />
-            <button onClick={handleSend} className="chat-send-btn">
+              />
+            <button onClick={() => handleSend()} className="chat-send-btn">
               Gửi
             </button>
           </div>
+          {/* Câu hỏi mẫu */}
+          {messages.length <= 1 && (
+            <div className="quick-suggest">
+              {QUICK_SUGGESTIONS.map((q, i) => (
+                <button key={i} onClick={() => handleSend(q)}>
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </>
