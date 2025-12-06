@@ -16,6 +16,8 @@ import store from './store';
 // 1. IMPORT BrowserRouter từ react-router-dom
 import { HashRouter } from 'react-router-dom'
 
+import { CartProvider } from './context/Cartcontext.tsx';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
