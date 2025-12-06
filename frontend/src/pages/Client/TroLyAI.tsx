@@ -11,7 +11,6 @@ const TroLyAI: React.FC = () => {
 
   const QUICK_SUGGESTIONS = [
     "Tôi muốn xem sản phẩm bán chạy",
-    "Tư vấn giúp tôi chọn size phù hợp",
     "Shop có free ship không?"
   ];
 
@@ -34,33 +33,30 @@ const TroLyAI: React.FC = () => {
     }
   };
 
-  const handleSend = async (preset?: string) => {
-    const textToSend = preset || input;
+const handleSend = async (preset?: string) => {
+  const textToSend = preset || input;
 
-    if (!textToSend.trim()) return;
+  if (!textToSend.trim()) return;
 
-    // Tin nhắn người dùng
-    setMessages((prev) => [...prev, { sender: "user", text: textToSend }]);
-    setInput("");
+  const userMsg = { sender: "user", text: textToSend };
 
-    // Hiệu ứng bot đang gõ
-    setIsTyping(true);
+  setMessages(prev => [...prev, userMsg]);
+  setInput("");
+  setIsTyping(true);
 
-    // Gọi API
-    const res = await sendMessage(textToSend);
+  // Gửi lịch sử tin nhắn lên server
+  const res = await sendMessage(textToSend, messages);
 
-    let botReply = "❌ Không nhận được phản hồi từ server.";
+  let botReply = res?.reply 
+    || res?.candidates?.[0]?.content?.parts?.[0]?.text 
+    || "❌ Không nhận được phản hồi từ server.";
 
-    if (res?.reply) botReply = res.reply;
-    else if (res?.candidates?.[0]?.content?.parts?.[0]?.text)
-      botReply = res.candidates[0].content.parts[0].text;
+  setTimeout(() => {
+    setIsTyping(false);
+    setMessages(prev => [...prev, { sender: "bot", text: botReply }]);
+  }, 800);
+};
 
-    // Delay để typing animation nhìn thật hơn
-    setTimeout(() => {
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
-    }, 800);
-  };
 
   return (
     <>
@@ -76,7 +72,14 @@ const TroLyAI: React.FC = () => {
               <div key={index} className={`chat-message ${msg.sender}`}>
                 {msg.sender === "bot" && <div className="avatar bot">🤖</div>}
                 {msg.sender === "user" && <div className="avatar user">🙋‍♂️</div>}
-                <div className="message-bubble">{msg.text}</div>
+                {msg.sender === "bot" ? (
+      <div
+        className="message-bubble"
+        dangerouslySetInnerHTML={{ __html: msg.text }}
+      />
+    ) : (
+      <div className="message-bubble">{msg.text}</div>
+    )}
               </div>
             ))}
 

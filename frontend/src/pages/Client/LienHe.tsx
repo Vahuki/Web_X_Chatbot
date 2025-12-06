@@ -22,7 +22,7 @@ const LienHe = () => {
             </div>
             <div>
               <h5 className="fw-bold mb-1">Điện Thoại</h5>
-              <p className="mb-0 text-muted">0123 456 789</p>
+              <p className="mb-0 text-muted">0822 124 082</p>
               <p className="mb-0 text-muted">0987 654 321</p>
             </div>
           </div>
@@ -50,8 +50,8 @@ const LienHe = () => {
             </div>
             <div>
               <h5 className="fw-bold mb-1">Địa Chỉ</h5>
-              <p className="mb-0 text-muted">123 Đường Lê Lợi</p>
-              <p className="mb-0 text-muted">Quận 1, TP. Đà Nẵng</p>
+              <p className="mb-0 text-muted">189 Trần Cao Vân</p>
+              <p className="mb-0 text-muted">Thanh Khê, TP. Đà Nẵng</p>
             </div>
           </div>
         </div>
