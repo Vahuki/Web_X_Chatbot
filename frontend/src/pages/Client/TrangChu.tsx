@@ -100,13 +100,13 @@ const TrangChu = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="/img/slide_1.png" className="d-block w-100" alt="Slide 1" style={{ height: '500px' }} />
+            <img src={import.meta.env.BASE_URL +"/img/slide_1.png"} className="d-block w-100" alt="Slide 1" style={{ height: '500px' }} />
           </div>
           <div className="carousel-item">
-            <img src="/img/slide_2.png" className="d-block w-100" alt="Slide 2" style={{ height: '500px' }} />
+            <img src={import.meta.env.BASE_URL +"/img/slide_2.png"} className="d-block w-100" alt="Slide 2" style={{ height: '500px' }} />
           </div>
           <div className="carousel-item">
-            <img src="/img/slide_3.jpg" className="d-block w-100" alt="Slide 3" style={{ height: '500px' }} />
+            <img src={import.meta.env.BASE_URL +"/img/slide_3.png"} className="d-block w-100" alt="Slide 3" style={{ height: '500px' }} />
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
