@@ -14,16 +14,17 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 // 1. IMPORT BrowserRouter từ react-router-dom
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
+
 import { CartProvider } from './context/Cartcontext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
 
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
 
     </Provider>
   </StrictMode>,

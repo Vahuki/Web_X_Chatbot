@@ -9,7 +9,7 @@ const Header = () => {
         <div className="container">
           {/* LOGO */}
           <Link className="navbar-brand" to="/">
-            <img src="/img/logo.png" alt="Logo" />
+            <img src={import.meta.env.BASE_URL +"/img/logo.png"} alt="Logo" />
           </Link>
 
           <button
